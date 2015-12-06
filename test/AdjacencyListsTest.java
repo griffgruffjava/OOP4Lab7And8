@@ -79,6 +79,45 @@ public class AdjacencyListsTest {
         
         al.remove(edge2);
         System.out.println(" (0,1) is an edge "+al.isEdge(1,0));
+
+//        al.breadthFirstTraversal(0);
+    }
+    
+    @Test
+    public void breadthFirstTraversalTest()
+    {
+        System.out.println("breadthFirstTraversal test");
+        Edge edge0 = new Edge(0,1);
+        Edge edge1 = new Edge(0,3);
+        Edge edge2 = new Edge(0,4);
+        Edge edge3 = new Edge(0,2);
+        Edge edge4 = new Edge(1,3);
+        Edge edge5 = new Edge(1,4);
+        Edge edge6 = new Edge(2,5);
+        Edge edge7 = new Edge(2,6);
+        Edge edge8 = new Edge(5,6);
+        Edge edge9 = new Edge(3,4);
+        
+        AdjacencyLists al = new AdjacencyLists(7, false);
+        al.insert(edge0);
+        al.insert(edge1);
+        al.insert(edge2);
+        al.insert(edge3);
+        al.insert(edge4);
+        al.insert(edge5);
+        al.insert(edge6);
+        al.insert(edge7);
+        al.insert(edge8);
+        al.insert(edge9);
+        
+//        mg.breadthFirstTraversal(0);
+//        System.out.println(mg.toString());
+        
+//        mg.breadthFirstTraversal(4);
+        
+        al.breadthFirstTraversal(4);
+        System.out.println("");
+        al.depthFirstTraversal(4);
     }
 
     /**
