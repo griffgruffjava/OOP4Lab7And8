@@ -115,8 +115,9 @@ public class MatrixGraphTest {
 //        mg.breadthFirstTraversal(0);
 //        System.out.println(mg.toString());
         System.out.println("");
-        mg.breadthFirstTraversal(4);
+//        mg.breadthFirstTraversal(4);
         
+        mg.depthFirstTraversal(0);
     }
             
 

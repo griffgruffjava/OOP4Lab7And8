@@ -1,4 +1,5 @@
 
+import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -98,8 +99,51 @@ public class MatrixGraph extends AbstractGraph {
 
     public void depthFirstTraversal(int start) {
         //Output the vertices in depth first order
+        String[] markedAs = new String[this.getNumVertices()]; 
         
+        for(int i=0; i<this.getNumVertices(); i++)
+        {
+            markedAs[i] = "not_visited";
+        }
+        
+        Deque<Integer> stack = new ArrayDeque<Integer>();
+        stack.add(start);
+        markedAs[start]="waiting";
+        
+        while(stack.size()>0)
+        {
+            System.out.println("Stack is now "+ stack.toString());
+            int vertex = stack.pop();
+            markedAs[vertex]="visited";
+            
+            for(int j=0; j<this.getNumVertices(); j++)
+            {
+                if(matrix[vertex][j]==1)
+                {
+                    if(markedAs[j]=="not_visited")
+                    {
+                        markedAs[j]="waiting";
+                        stack.push(j);
+                    }
+                }
+            }
+            
+            
+        }
     }
+    
+//    1  procedure DFS-iterative(G,v):
+//2      let S be a stack
+//3      S.push(v)
+//4      while S is not empty
+//5            v = S.pop()
+//6            if v is not labeled as discovered:
+//7                label v as discovered
+//8                for all edges from v to w in G.adjacentEdges(v) do
+//9                    S.push(w)
+
+    
+    
 
     public String toString() {
         
