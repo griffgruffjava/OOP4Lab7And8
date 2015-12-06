@@ -1,4 +1,9 @@
 
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Queue;
+
+
 /**
  * ***************************************************
  *    Title: MatrixGraph.java
@@ -58,10 +63,42 @@ public class MatrixGraph extends AbstractGraph {
 
     public void breadthFirstTraversal(int start) {
         //Output the vertices in breadth first order
+        String[] markedAs = new String[this.getNumVertices()]; 
+        
+        for(int i=0; i<this.getNumVertices(); i++)
+        {
+            markedAs[i] = "not_visited";
+        }
+        
+        Deque<Integer> myQueue = new LinkedList<Integer>();
+        markedAs[start]="waiting";
+        myQueue.add(start);
+        
+        while(myQueue.size()>0)
+        {
+            System.out.println("Queue is now "+ myQueue.toString());
+            int vertex = myQueue.removeFirst();
+            markedAs[vertex] = "visited";
+            for(int j=0; j<this.getNumVertices(); j++)
+            {
+                if(matrix[vertex][j]==1)
+                {
+                    if(markedAs[j]=="not_visited")
+                    {
+                        markedAs[j]="waiting";
+                        myQueue.add(j);
+                    }
+                }
+            }
+            
+        }
+        
+        
     }
 
     public void depthFirstTraversal(int start) {
         //Output the vertices in depth first order
+        
     }
 
     public String toString() {
